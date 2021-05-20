@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="server.js"></script>
+    <title>Inserir Pokemon</title>
+</head>
+<body>
+    <form action="/pokemons" method="post">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nomepokemon" />
+        </div>
+        <div>
+            <select id="tipo" name="codtipo">
+                <option value="1">Planta</option>
+                <option value="2">Fogo</option>
+                <option value="3">Água</option>
+                <option value="4">Inseto</option>
+                <option value="5">Normal</option>
+                <option value="6">Venenoso</option>
+                <option value="7">Elétrico</option>
+                <option value="8">Terra</option>
+                <option value="9">Lutador</option>
+                <option value="10">Psiquico</option>
+                <option value="11">Pedra</option>
+                <option value="12">Voador</option>
+                <option value="13">Fantasma</option>
+                <option value="14">Gelo</option>
+                <option value="15">Dragão</option>
+                <option value="16">Metálico</option>
+                <option value="17">Noturno</option>
+                <option value="18">Fada</option>
+              </select>
+        </div>
+        <div class="button">
+            <button type="submit">Salvar Pokemon</button>
+        </div>
+
+    </form>  
+</body>
+</html>

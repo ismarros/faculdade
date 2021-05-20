@@ -1,0 +1,1 @@
+POST http://localhost:8001/pokemons?nomepokemonVENONAT$codtipo=4
