@@ -6,6 +6,16 @@ const restify = require('restify');
 const errors = require('restify-errors');
 var path = require('path');
 const bodyParser = require('body-parser');
+const corsMiddleware = require('restify-cors-middleware2')
+
+const cors = corsMiddleware({
+  preflightMaxAge: 5, //Optional
+  origins: ['*'],
+  allowHeaders: ['API-Token'],
+  exposeHeaders: ['API-Token-Expiry']
+})
+
+
 
 
 const server = restify.createServer({
@@ -20,13 +30,27 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 // Access the parse results as request.body
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
-
+server.use(
+    function crossOrigin(req,res,next){
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept" );
+      return next();
+    }
+);
 
 
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
+
+server.pre(cors.preflight);
+server.use(cors.actual);
 
 
 server.listen(8001, function(){
