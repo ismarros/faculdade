@@ -7,7 +7,7 @@ class App extends Component{
   state = {
     pokemons: [],
     nomepokemon: '',
-    codtipo: '',
+    codtipo: 1,
   }
 
 
@@ -30,7 +30,6 @@ class App extends Component{
   }
 
   handleSubmit = event => {
-    event.preventDefault();
 
     const user = {
       nomepokemon: this.state.nomepokemon,
